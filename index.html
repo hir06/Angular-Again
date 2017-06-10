@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html ng-app="FilterApp" ng-controller="dashBoardController as qvm">
+
+<head>
+    <title>Projects</title>
+    <!--Meta-->
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+    <meta http-equiv='Cache-control' content='no-cache' />
+    <meta http-equiv='Expires' content='-1' />
+    <meta http-equiv='pragma' content='no-cache' />
+
+    <!--FAVICON-->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <!--CSS-->
+
+    <link href="css/common.css" rel="stylesheet" />
+    <link href="css/materialize.min.css" rel="stylesheet" />
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+
+    <script src="js_setup/jquery-2.1.1.min.js"></script>
+
+    <script src="js_setup/materialize.min.js"></script>
+    <link href="css/materialize.min.css" rel="stylesheet" />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body ng-keyup="qvm.navigate($event.keyCode)">
+
+    <div class="page-wrap">
+        <nav>
+            <div class="nav-wrapper">
+                <!--<a href="#" class="brand-logo right">Logo</a>-->
+                <ul id="nav-mobile" class="left">
+
+                    <li style=" font-size: 2.1rem; margin-right: 1rem; cursor: pointer;" ng-click="qvm.showAll($event)" ng-class="{navClick:qvm.showComponent==false}">Products</li>
+                    <li style=" font-size: 2.1rem; margin-right: 1rem; cursor: pointer;" ng-click="qvm.showAll($event)" ng-class="{navClick:qvm.showComponent==true}">Projects</li>
+                </ul>
+            </div>
+        </nav>
+        <div class="row" ng-if="qvm.showComponent">
+            <div class="col l3 m4 s12">
+                <div class="component">
+                    <input type="text" ng-model="qvm.project" ng-model-options="{debounce:1000}" ng-change="qvm.filterData()" placeholder="Search here" />
+
+                    <div ng-repeat="d in qvm.data" class="highDiv">
+
+                        <div class="groupDetail" ng-if="qvm.showGroup[0] == d.name || qvm.showGroup[1] == d.name || !qvm.filtered " id="{{d.id}}" ng-class="{hlight:qvm.showGroup[0]==d.name}">
+                            <img ng-src=" {{d.image.link}}" />
+                            <span ng-bind-html="qvm.highlight(d.name, qvm.project)">  {{d.name}} </span>
+                        </div>
+
+                        <div ng-repeat="group in d.groups|filter:qvm.project" style="padding:0.5rem;">
+
+                            <a href="{{group.url}}" target="_blank" ng-bind-html="qvm.highlight(group.name, qvm.project)">{{group.name}}</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!--This is where different route's view are displayed-->
+        <!--<div ng-view></div>-->
+
+
+        <div>
+
+        </div>
+    </div>
+
+
+
+    <!--loader to be used while calling http service to get json data-->
+
+    <div ng-show="loaderVisibility">
+        <div id="LoaderAnime">
+            <div>
+                <div class="preloader-wrapper big active">
+                    <div class="spinner-layer spinner-blue">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+
+                    <div class="spinner-layer spinner-red">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+
+                    <div class="spinner-layer spinner-yellow">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+
+                    <div class="spinner-layer spinner-green">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+                <span>Just a moment...</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('.component').css('max-height', $(window).height() * 0.7);
+    </script>
+
+    <!--JS-->
+
+    <script src="js_setup/angular.js"></script>
+    <script src="js_setup/angular-route.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAd1xMYT1bt99qtFWQEzXiRBvORDWHgPtk&libraries=places"></script>
+    <script src="ng_app/App.js"></script>
+    <script src="ng_app/common/AppService.js"></script>
+
+
+    <!--OnePush-->
+    <script src="ng_app/components/portfolios/dashBoard.service.js"></script>
+    <script src="ng_app/components/portfolios/dashBoard.controller.js"></script>
+    <script src="ng_app/components/portfolios/dashBoard.module.js"></script>
+
+</body>
+
+</html>

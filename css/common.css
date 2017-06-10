@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+}
+
+html {
+    height: 100%;
+    font-size: 100%;
+    overflow: hidden;
+    font-family: 'Cairo', sans-serif !important;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.231;
+    overflow: hidden;
+    background-image: url('../Images/bgg.png');
+    background-repeat: repeat;
+}
+
+.hlight {
+    background: #3591a0;
+}
+
+.highlightedText {
+    background: #b7b7b7;
+}
+
+.navClick {
+    background: #2f2f2f;
+}
+
+.groupDetail {
+    font-size: 2rem;
+    text-decoration: underline;
+    padding: 0.5rem
+}
+
+.component {
+    background: rgba(0, 0, 0, 0.17);
+    color: white;
+    /*max-height: 447px;*/
+    /*height: 447px;*/
+    overflow-y: auto;
+    margin-right: -6px;
+}
+
+.component a {
+    color: white;
+}
+
+.active {
+    background: #2f2f2f;
+}
+
+#map {
+    height: 767px;
+    position: relative;
+    overflow: hidden;
+    width: 98.5%;
+}
+
+input[type="radio"]+label {
+    padding-left: 25px;
+    padding-right: 18px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+span {
+    cursor: default !important;
+}
+
+i {
+    cursor: pointer !important;
+}
+
+#LoaderAnime {
+    background: rgba(0, 0, 0, 0.89);
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease-in;
+    z-index: 5000 !important;
+}
+
+#LoaderAnime>div {
+    height: 350px;
+    width: 80px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    font-size: 25px;
+    line-height: 12em;
+    transform: scale(0.9);
+}
+
+#LoaderAnime>div>span {
+    position: absolute;
+    top: 50px;
+    width: 190px;
+    left: -51px;
+}
+
+::-webkit-scrollbar {
+    width: 13px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #3591a0;
+    /*background: rgba(28, 86, 128, 0.85);*/
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .5);
+}
+
+ ::-webkit-scrollbar-thumb:window-inactive {
+    background: #3591a0;
+    /*background: rgba(28, 86, 128, 0.85);*/
+}
