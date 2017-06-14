@@ -133,7 +133,7 @@
         }
 
         function filterData() {
-
+ _this.showGroup = [];
             if (_this.project == "") {
                 _this.filtered = false;
                 _this.showGroup = [];
